@@ -94,6 +94,16 @@ servidor.post('/media', (req,resp) => {
     resp.send('a media é ' + media)
 })
 
+servidor.post('/dobros', (req,resp) => {
+    let nums = req.body.numeros
+
+    let nums2 = []
+    for (let i = 0; i < nums.length; i++){
+        nums2[i] = nums[i] * 2;
+    }
+
+    resp.send('os dobros dos numeros são ' + nums2)
+})
 
  servidor.listen(
     5001,
