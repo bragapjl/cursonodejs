@@ -1,5 +1,5 @@
 console.log('supra');
-let minhaspomba = 10
-let minhapomba = 10
-let tudo = minhapomba + minhaspomba
+let victor = 10
+let braga2 = 10
+let tudo = victor + braga2
 console.log(tudo);
