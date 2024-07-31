@@ -105,6 +105,50 @@ servidor.post('/dobros', (req,resp) => {
     resp.send('os dobros dos numeros são ' + nums2)
 })
 
+
+servidor.post('/loja/pedido', (req,resp) =>{
+
+    let total = req.body.total
+    let parcela = req.body.parcela
+    let cupom = req.query.cupom
+
+    if(parcela > 1){
+        let juros = total * 0.05
+        total += juros
+    }
+
+    if(cupom == 'quero100') {
+        total -= 100
+    }
+
+    resp.send('o valor final foi de ' + total)
+})
+
+
+
+servidor.post('/loja/pedido/completo', (req, resp) => {
+    let parcelas = req.body.parcelas
+    let itens = req.body.itens
+    let cupom = req.query.cupom
+
+    let total = 0
+
+    for(let produto of itens){
+        total += produto.preco
+    }
+
+    if(parcelas > 1){
+        let juros = total * 0.05
+        total += juros
+    }
+
+    if(cupom == 'quero100'){
+        total -= 100
+    }
+    
+    resp.send('o total a pagar é ' + total)
+})
+
  servidor.listen(
     5001,
      () => console.log('API SUBIU BOLADO NA PORTA 5001'))
